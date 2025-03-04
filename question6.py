@@ -4,7 +4,7 @@ import matplotlib.patches as mpatches
 # Define the processes with arrival and burst times.
 processes = [
     {"id": "P1", "arrival": 0,  "burst": 5,  "remaining": 5},
-    {"id": "P2", "arrival": 3,  "burst": 4,  "remaining": 4},
+    {"id": "P2", "arrival": 3,  "burst": 1,  "remaining": 1},
     {"id": "P3", "arrival": 10, "burst": 11, "remaining": 11},
     {"id": "P4", "arrival": 12, "burst": 5,  "remaining": 5},
     {"id": "P5", "arrival": 15, "burst": 12, "remaining": 12}
@@ -92,7 +92,7 @@ while len(finished) < len(processes):
             proc_state["idle"] = False
         # For processors that are idle and remain idle, if they had been idle in the previous time step, 
         # we update nothing here. We'll record idle events when a process is assigned.
-        if proc_state["proc"] is None and proc_state.get("idle") and (global_time > proc_state["event_start"]):
+        if proc_state["proc"] is None and proc_state.get("idle") and proc_state["event_start"] is not None and (global_time > proc_state["event_start"]):
             # We record idle events for each time unit while idle.
             schedule_events.append(("Idle", proc_state["event_start"], global_time + 1, f"Processor {i+1}"))
             proc_state["event_start"] = global_time + 1

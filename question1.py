@@ -131,7 +131,7 @@ if __name__ == "__main__":
     # Convert the given arrival times to minutes after 5:30 PM
     processes = [
         {"id": "P1", "arrival": 0,  "burst": 5},
-        {"id": "P2", "arrival": 3,  "burst": 4},
+        {"id": "P2", "arrival": 3,  "burst": 1},
         {"id": "P3", "arrival": 10, "burst": 11},
         {"id": "P4", "arrival": 12, "burst": 2},
         {"id": "P5", "arrival": 15, "burst": 12}
